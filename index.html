@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Tracker</title>
+    <!-- tailwind css -->
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <!-- font manrope -->
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+<style>
+    *{
+        font-family: "Manrope", sans-serif;
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <header class="w-11/12 mx-auto px-10 py-10">
+        <h1 class="text-2xl font-bold text-black pb-5">Job Application Tracker</h1>
+        <div class="grid  grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-4 rounded-none shadow-sm">
+                <p>Total</p>
+                <p id="total" class="text-2xl font-bold">8</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-none shadow-sm">
+                <p>Interview</p>
+                <p id="interviewCount" class="text-2xl font-bold text-green-500">0</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-none shadow-sm">
+                <p>Rejected</p>
+                <p id="rejectedCount" class="text-2xl font-bold text-red-500">0</p>
+            </div>
+        </div>
+    </header>
+    <main class=" w-11/12 mx-auto">
+        <div class="px-15 py-5 rounded-none shadow-sm flex justify-between">
+            <p class="font-bold">Available Jobs</p>
+            <p>8 Jobs</p>
+        </div>
+   
+     <div class="mb-2 px-15 py-5">
+            <button onclick="toggleStyle('all-filter-btn')"  class="bg-blue-400 shadow-sm font-light text-white px-5 py-2" id="all-filter-btn">All</button>
+            <button onclick="toggleStyle('interview-filter-btn')"  class="bg-white shadow-sm font-light px-5 py-2" id="interview-filter-btn">Interview</button>
+            <button onclick="toggleStyle('rejected-filter-btn')"  class="bg-white shadow-sm font-light px-5 py-2" id="rejected-filter-btn">Rejected</button>
+        </div>
+
+        <section id="allCards" class="w-11/12 mx-auto">
+
+            <!-- card 1 -->
+            <!-- <div class="card flex justify-between border p-8"> -->
+                <!-- main part 1 -->
+                <div class="space-y-3 rounded-sm shadow-sm">
+                    <!-- part 1 -->
+                    <div class="flex justify-between">
+                        <div>
+                            <p class="mobile text-2x font-bold">Mobile First Corp</p>
+                        <p class="positionName text-gray-400">React Native Developer</p>  
+                        </div>
+                           <div>
+                            <Button><img src="./delete.png" alt=""></Button>
+                           </div>
+                    </div>
+                    <p class="positionName text-gray-400">Remote • Full-time • $130,000 - $175,000</p>
+
+                    <!-- part 2 -->
+                    <div class="gap-2">
+                        <p class="applied bg-gray-200 w-30 text-center py-2">Not Applied</p>
+                        <p class=" text-gray-500 py-4">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                    </div>
+
+                     <div class="flex gap-5">
+                        <button class="interview-btn text-green-500 font-bold px-4 py-2 border-2 rounded-sm">INTERVIEW</button>
+                        <button class="rejected-btn text-red-500 font-bold px-4 py-2 border-2 rounded-sm">REJECTED</button>
+                     </div>
+                </div>
+            </section>
+    </main>
+</body>
+</html>
