@@ -1,5 +1,6 @@
 let interviewlist = [];
 let rejectedlist = [];
+let mainsSectin = [];
 let currentStatus = 'all';
 let jobs = document.getElementById('job');
 let totalcount = document.getElementById('total');
@@ -45,6 +46,8 @@ function toggleStyle(id){
     const selected = document.getElementById(id)
     selected.classList.remove('bg-white','text-black')
     selected.classList.add('bg-blue-400','text-white')
+
+
 
     if (id == 'interview-filter-btn') {
         allCardSection.classList.add('hidden');
@@ -215,3 +218,18 @@ function renderInterview() {
              filterSection.appendChild(div)
              
     }}
+
+
+
+    //delete button
+const deleteButtons = document.querySelectorAll('.delete-btn');
+console.log(deleteButtons)
+deleteButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+        
+        const divToDelete = event.target.closest('.informationDiv');
+        if (divToDelete) {
+            divToDelete.remove();
+        }
+    });
+});
