@@ -40,7 +40,7 @@
     <main class=" w-11/12 mx-auto">
         <div class="px-15 py-5 rounded-none shadow-sm flex justify-between">
             <p class="font-bold">Available Jobs</p>
-            <p>8 Jobs</p>
+            <p id="job">Jobs </p>
         </div>
    
      <div class="mb-2 px-15 py-5">
@@ -49,6 +49,23 @@
             <button onclick="toggleStyle('rejected-filter-btn')"  class="bg-white shadow-sm font-light px-5 py-2" id="rejected-filter-btn">Rejected</button>
         </div>
 
+        <!-- Filtered card -->
+
+        <section id="filtered-section" class="hidden">
+
+        </section>
+
+        <!-- no job section -->
+         <section id="nojob-section" class="hidden">
+            
+            <div class="w-11/12 max-auto ">
+                <img src="./jobs.png" alt="">
+                <p>No jobs available</p>
+                <p>Check back soon for new job opportunities</p>
+
+            </div>
+         </section>
+
         <section id="allCards" class="w-11/12 mx-auto space-y-5">
 
              <!-- card 1 -->
@@ -56,19 +73,20 @@
             <!-- part 1 -->
             <div class="flex justify-between">
                 <div>
-                    <p class="mobile text-2x font-bold">Mobile First Corp</p>
+                    <p class="companyName text-2x font-bold">Mobile First Corp</p>
                 <p class="positionName text-gray-400">React Native Developer</p>  
                 </div>
                    <div>
-                    <Button><img src="./delete.png" alt=""></Button>
+                    <Button id="delete" onclick="deleteParent('delete')"><img src="./delete.png" alt="Delete"></Button>
                    </div>
             </div>
-            <p class="positionName text-gray-400">Remote • Full-time • $130,000 - $175,000</p>
+            
 
             <!-- part 2 -->
             <div class="gap-2">
-                <p class="applied bg-gray-200 w-30 text-center py-2">Not Applied</p>
-                <p class=" text-gray-500 py-4">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                <p class="locationName text-gray-400">Remote • Full-time • $130,000 - $175,000</p>
+                <p id="applied1" class="applied bg-gray-200 w-30 text-center py-2 hidden">not applied</p>
+                <p class="quality text-gray-500 py-4">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
             </div>
 
              <div class="flex gap-5">
