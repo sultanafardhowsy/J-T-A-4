@@ -46,8 +46,7 @@ function toggleStyle(id){
     const selected = document.getElementById(id)
     selected.classList.remove('bg-white','text-black')
     selected.classList.add('bg-blue-400','text-white')
-
-
+    
 
     if (id == 'interview-filter-btn') {
         allCardSection.classList.add('hidden');
@@ -125,7 +124,7 @@ mainContainer.addEventListener('click', function (event) {
         jobs.innerText=totalcount.innerText - interviewCount.innerText-rejectedCount.innerText +' jobs of '+totalcount.innerText+' jobs';
         // Re-render current filter view
         toggleStyle(currentStatus);
-       
+    
     }
     else if (event.target.classList.contains('rejected-btn')) {
         const parentNode = event.target.closest('.card') || event.target.parentNode.parentNode;
@@ -195,7 +194,8 @@ function renderInterview() {
                 <button class="rejected-btn text-red-500 font-bold px-4 py-2 border-2 rounded-sm">REJECTED</button>
              </div>
              `
-             filterSection.appendChild(div)
+             filterSection.appendChild(div);
+             
              
     }}
 
