@@ -25,3 +25,10 @@ this tecnique reduces the use of eventlistener. using single listener in parent 
 
 
 ### 5. What is the difference between preventDefault() and stopPropagation() methods?
+Ans:the difference between preventDefault and stopPropagation is given bellow:-
+
+ preventDefault() prevents something to do after an event. it prevents the default browser behavior after specific event. for example :- stopping a form from submitting and refresing the page. or toggling a checkbox etc. it does not stops propagation that means capturing and bubbling.
+
+stopPropagation() stops propagation. it stops the event from bubbling up to parent or capturing down to child. it does not prevents browsers default behavior.
+
+

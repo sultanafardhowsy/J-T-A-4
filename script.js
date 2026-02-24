@@ -46,49 +46,57 @@ function toggleStyle(id){
     const selected = document.getElementById(id)
     selected.classList.remove('bg-white','text-black')
     selected.classList.add('bg-blue-400','text-white')
-    
+     calculatecount();
 
-    if (id == 'interview-filter-btn') {
+     if (id == 'all-filter-btn') {
+        allCardSection.classList.remove('hidden');
+        filterSection.classList.add('hidden');
+        nojobSection.classList.add('hidden');
+        
+        jobs.innerText=totalcount.innerText  +' jobs of '+totalcount.innerText+' jobs';
+    
+    }
+
+  else  if (id == 'interview-filter-btn') {
         allCardSection.classList.add('hidden');
         filterSection.classList.remove('hidden');
+        jobs.innerText = interviewCount.innerText;
         if(interviewlist.length === 0){
             nojobSection.classList.remove('hidden');
         } else {
             nojobSection.classList.add('hidden');
         }
         renderInterview();
-    } else if (id == 'all-filter-btn') {
-        allCardSection.classList.remove('hidden');
-        filterSection.classList.add('hidden');
-        nojobSection.classList.add('hidden');
-    } else if (id == 'rejected-filter-btn') {
+
+        } else if (id == 'rejected-filter-btn') {
         allCardSection.classList.add('hidden');
         filterSection.classList.remove('hidden');
+         jobs.innerText = rejectedCount.innerText;
         if(rejectedlist.length === 0){
             nojobSection.classList.remove('hidden');
         } else {
             nojobSection.classList.add('hidden');
         }
         renderRejected();
-    }
-    calculatecount();
+    } 
+    
 }
 
 
-    //delete button
 const deleteButtons = document.querySelectorAll('.delete-btn');
-console.log(deleteButtons)
-deleteButtons.forEach(button => {
-    button.addEventListener('click', (event) => {
-        
-        const divToDelete = event.target.closest('.informationDiv');
-        if (divToDelete) {
-            divToDelete.remove();
-            totalcount.innerText = totalcount.innerText-1;
-            jobs.innerText = totalcount.innerText + ' jobs';
-        }
-    });
-});
+
+for (const button of deleteButtons) {
+  button.addEventListener('click', (event) => {
+    const divToDelete = event.target.closest('.informationDiv');
+    if (divToDelete) {
+      divToDelete.remove();
+      // Update count (ensure totalcount.innerText is a number)
+      totalcount.innerText = Number(totalcount.innerText) - 1;
+      jobs.innerText = totalcount.innerText + ' jobs';
+    }
+  });
+}
+
 
 // Then in your mainContainer event listener, add calls to toggleStyle with the current filter
 mainContainer.addEventListener('click', function (event) {
@@ -121,7 +129,6 @@ mainContainer.addEventListener('click', function (event) {
         rejectedlist = rejectedlist.filter(item => item.companyName !== companyName);
 
         calculatecount();
-        jobs.innerText=totalcount.innerText - interviewCount.innerText-rejectedCount.innerText +' jobs of '+totalcount.innerText+' jobs';
         // Re-render current filter view
         toggleStyle(currentStatus);
     
@@ -151,9 +158,8 @@ mainContainer.addEventListener('click', function (event) {
 
         interviewlist = interviewlist.filter(item => item.companyName !== companyName);
 
-        calculatecount();
-         jobs.innerText=totalcount.innerText -interviewCount.innerText- rejectedCount.innerText +' jobs of '+totalcount.innerText+' jobs';
-
+calculatecount()
+jobs.innerText=totalcount.innerText -interviewCount.innerText- rejectedCount.innerText +' jobs of '+totalcount.innerText+' jobs';
         toggleStyle(currentStatus);
     }
 });
