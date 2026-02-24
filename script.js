@@ -75,6 +75,22 @@ function toggleStyle(id){
     calculatecount();
 }
 
+
+    //delete button
+const deleteButtons = document.querySelectorAll('.delete-btn');
+console.log(deleteButtons)
+deleteButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+        
+        const divToDelete = event.target.closest('.informationDiv');
+        if (divToDelete) {
+            divToDelete.remove();
+            totalcount.innerText = totalcount.innerText-1;
+            jobs.innerText = totalcount.innerText + ' jobs';
+        }
+    });
+});
+
 // Then in your mainContainer event listener, add calls to toggleStyle with the current filter
 mainContainer.addEventListener('click', function (event) {
     if (event.target.classList.contains('interview-btn')) {
@@ -106,9 +122,10 @@ mainContainer.addEventListener('click', function (event) {
         rejectedlist = rejectedlist.filter(item => item.companyName !== companyName);
 
         calculatecount();
-
+        jobs.innerText=totalcount.innerText - interviewCount.innerText-rejectedCount.innerText +' jobs of '+totalcount.innerText+' jobs';
         // Re-render current filter view
         toggleStyle(currentStatus);
+       
     }
     else if (event.target.classList.contains('rejected-btn')) {
         const parentNode = event.target.closest('.card') || event.target.parentNode.parentNode;
@@ -136,6 +153,7 @@ mainContainer.addEventListener('click', function (event) {
         interviewlist = interviewlist.filter(item => item.companyName !== companyName);
 
         calculatecount();
+         jobs.innerText=totalcount.innerText -interviewCount.innerText- rejectedCount.innerText +' jobs of '+totalcount.innerText+' jobs';
 
         toggleStyle(currentStatus);
     }
@@ -221,15 +239,3 @@ function renderInterview() {
 
 
 
-    //delete button
-const deleteButtons = document.querySelectorAll('.delete-btn');
-console.log(deleteButtons)
-deleteButtons.forEach(button => {
-    button.addEventListener('click', (event) => {
-        
-        const divToDelete = event.target.closest('.informationDiv');
-        if (divToDelete) {
-            divToDelete.remove();
-        }
-    });
-});
