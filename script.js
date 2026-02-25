@@ -1,7 +1,7 @@
 let interviewlist = [];
 let rejectedlist = [];
 let mainsSectin = [];
-let currentStatus = 'all';
+let currentStatus = 'allcards';
 let jobs = document.getElementById('job');
 let totalcount = document.getElementById('total');
 let interviewCount = document.getElementById('interviewCount');
@@ -88,13 +88,19 @@ const deleteButtons = document.querySelectorAll('.delete-btn');
 for (const button of deleteButtons) {
   button.addEventListener('click', (event) => {
     const divToDelete = event.target.closest('.informationDiv');
+    const companyName = divToDelete.querySelector('.companyName')
     if (divToDelete) {
+        interviewlist = interviewlist.filter(item=>item.companyName!==companyName.innerText)
+        rejectedlist = rejectedlist.filter(item=>item.companyName!==companyName.innerText)
+    
       divToDelete.remove();
+     calculatecount();
+        
       // Update count (ensure totalcount.innerText is a number)
-      totalcount.innerText = Number(totalcount.innerText) - 1;
+      totalcount.innerText = Number(totalcount.innerText);
       jobs.innerText = totalcount.innerText + ' jobs';
     }
-  });
+}) 
 }
 
 
@@ -171,8 +177,7 @@ function renderInterview() {
 
     // crating innerHtml
     for (let interview of interviewlist) {
-        console.log(interview);
-
+        
         let div = document.createElement('div');
         div.className = 'space-y-3 rounded-sm shadow-sm'
         div.innerHTML = `
