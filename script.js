@@ -135,6 +135,7 @@ mainContainer.addEventListener('click', function (event) {
         rejectedlist = rejectedlist.filter(item => item.companyName !== companyName);
 
         calculatecount();
+        jobs.innerText=totalcount.innerText  +' jobs of '+totalcount.innerText+' jobs';
         // Re-render current filter view
         toggleStyle(currentStatus);
     
@@ -165,7 +166,7 @@ mainContainer.addEventListener('click', function (event) {
         interviewlist = interviewlist.filter(item => item.companyName !== companyName);
 
 calculatecount()
-jobs.innerText=totalcount.innerText -interviewCount.innerText- rejectedCount.innerText +' jobs of '+totalcount.innerText+' jobs';
+jobs.innerText=totalcount.innerText  +' jobs of '+totalcount.innerText+' jobs';
         toggleStyle(currentStatus);
     }
 });
